@@ -5,13 +5,21 @@ const { expect } = require('chai');
 const BASE_URL = process.env.API_URL || 'http://localhost:3000';
 let response;
 
+console.log(">>> common.steps.js loaded <<<");
+
 // ─── Background ───────────────────────────────────────────────
 Given('the client management API is running', async function () {
+  console.log("Checking API...");
+
   try {
     const res = await axios.get(`${BASE_URL}/`);
+
+    console.log("Status:", res.status);
+
     expect(res.status).to.equal(200);
   } catch (err) {
-    throw new Error(`API is not running at ${BASE_URL}. Start the backend first.\n${err.message}`);
+    console.log(err.message);
+    throw err;
   }
 });
 

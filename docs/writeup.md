@@ -9,7 +9,7 @@
 | **Name**      | *(Your Full Name)*             |
 | **Course**    | Full Stack Web Development     |
 | **Project**   | Client Management Application  |
-| **Date**      | June 2024                      |
+| **Date**      | June 2026                      |
 
 ---
 
