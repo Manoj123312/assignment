@@ -1,0 +1,10 @@
+/* Global styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+h2 { margin-bottom: 8px; color: #1a237e; }
+hr { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
+a { color: #1a237e; }

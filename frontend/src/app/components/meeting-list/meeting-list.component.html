@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h2>Meeting Schedules</h2>
+  <a routerLink="/meetings/new" class="btn btn-primary">+ Schedule Meeting</a>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<div *ngIf="meetings.length === 0 && !errorMessage" class="empty-state">
+  No meetings scheduled. <a routerLink="/meetings/new">Schedule one now.</a>
+</div>
+
+<table *ngIf="meetings.length > 0" class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Topic</th>
+      <th>Client</th>
+      <th>People</th>
+      <th>Start Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let meeting of meetings">
+      <td>{{ meeting.id }}</td>
+      <td>{{ meeting.topic }}</td>
+      <td>{{ meeting.client_name }}</td>
+      <td>{{ meeting.number_of_people }}</td>
+      <td>{{ meeting.start_time | date:'medium' }}</td>
+      <td>
+        <a [routerLink]="['/meetings', meeting.id, 'edit']" class="btn btn-sm btn-warning">Edit</a>
+        <button (click)="deleteMeeting(meeting.id!)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
