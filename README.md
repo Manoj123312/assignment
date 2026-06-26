@@ -174,7 +174,7 @@ The frontend will run at: **http://localhost:4200**
 
 #### 3. Get All Clients
 - **GET** `/api/clients`
-- Header: `Authorization: ******
+- Header: Set Authorization to "Bearer" followed by the token from step 2
 
 #### 4. Create a Client
 - **POST** `/api/clients`
@@ -201,7 +201,7 @@ The frontend will run at: **http://localhost:4200**
 
 #### 6. Get All Meetings
 - **GET** `/api/meetings`
-- Header: `Authorization: ******
+- Header: Set Authorization to "Bearer" followed by the token from step 2
 
 ---
 
