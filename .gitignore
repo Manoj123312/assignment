@@ -1,0 +1,21 @@
+# Node
+node_modules/
+backend/node_modules/
+bdd/node_modules/
+npm-debug.log*
+
+# Environment
+.env
+backend/.env
+
+# Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# BDD reports
+bdd/reports/
+
+# OS
+.DS_Store
+Thumbs.db
