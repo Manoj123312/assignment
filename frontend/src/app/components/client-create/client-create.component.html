@@ -1,0 +1,41 @@
+<h2>Create a Client</h2>
+<p class="subtitle">Please fill in this form to create a client.</p>
+<hr/>
+
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<form (ngSubmit)="onSubmit()" #clientForm="ngForm" class="form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Enter Name"
+           [(ngModel)]="client.name" required class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="Enter Email"
+           [(ngModel)]="client.email" required class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address" name="address" type="text" placeholder="Enter Address"
+           [(ngModel)]="client.address" required class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Enter Password"
+           [(ngModel)]="client.password" required class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="repeatPassword">Repeat Password</label>
+    <input id="repeatPassword" name="repeatPassword" type="password" placeholder="Repeat Password"
+           [(ngModel)]="client.repeatPassword" required class="form-control"/>
+  </div>
+
+  <hr/>
+  <button type="submit" class="btn btn-primary" [disabled]="!clientForm.valid">Register</button>
+  <a routerLink="/clients" class="btn btn-secondary">Cancel</a>
+</form>

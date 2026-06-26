@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h2>Clients</h2>
+  <a routerLink="/clients/new" class="btn btn-primary">+ Add Client</a>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<div *ngIf="clients.length === 0 && !errorMessage" class="empty-state">
+  No clients found. <a routerLink="/clients/new">Create the first one.</a>
+</div>
+
+<table *ngIf="clients.length > 0" class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.address }}</td>
+      <td>{{ client.created_at | date:'short' }}</td>
+      <td>
+        <a [routerLink]="['/clients', client.id, 'edit']" class="btn btn-sm btn-warning">Edit</a>
+        <button (click)="deleteClient(client.id!)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

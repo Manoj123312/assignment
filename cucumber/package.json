@@ -1,0 +1,13 @@
+{
+  "name": "client-management-bdd",
+  "version": "1.0.0",
+  "description": "BDD tests for Client Management Application using Cucumber",
+  "scripts": {
+    "test": "cucumber-js --format progress"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.3.0",
+    "axios": "^1.6.0",
+    "chai": "^4.3.10"
+  }
+}

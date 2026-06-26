@@ -1,0 +1,12 @@
+.page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.table { width:100%; border-collapse:collapse; }
+.table th, .table td { padding:10px 14px; border:1px solid #ddd; text-align:left; }
+.table th { background:#1a237e; color:#fff; }
+.table tr:nth-child(even) { background:#f5f5f5; }
+.btn { padding:6px 14px; border:none; border-radius:4px; cursor:pointer; text-decoration:none; font-size:.85rem; }
+.btn-primary { background:#1a237e; color:#fff; }
+.btn-warning { background:#f9a825; color:#fff; margin-right:6px; }
+.btn-danger  { background:#c62828; color:#fff; }
+.btn-sm { padding:4px 10px; }
+.alert-danger { background:#ffebee; border:1px solid #ef9a9a; padding:10px; border-radius:4px; color:#b71c1c; }
+.empty-state  { color:#666; margin-top:20px; }
