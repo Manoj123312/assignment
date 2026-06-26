@@ -2,11 +2,11 @@
 
 ---
 
-## 1. Student / Author Details
+## 1. Student Details
 
 | Field         | Value                          |
 |---------------|--------------------------------|
-| **Name**      | *(Your Full Name)*             |
+| **Name**      | Gona Manoj                     |
 | **Course**    | Full Stack Web Development     |
 | **Project**   | Client Management Application  |
 | **Date**      | June 2026                      |
