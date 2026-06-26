@@ -1,0 +1,54 @@
+<div class="form-container">
+  <h1>Register</h1>
+  <p>Please fill in this form to create your account.</p>
+  <hr />
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" placeholder="Enter Name" />
+      <div class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+        Name is required (min 2 characters).
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="Enter Email" />
+      <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        A valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" type="text" formControlName="address" placeholder="Enter Address" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Enter Password" />
+      <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Password is required (min 6 characters).
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="repeatPassword">Repeat Password</label>
+      <input id="repeatPassword" type="password" formControlName="repeatPassword" placeholder="Repeat Password" />
+      <div class="error" *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('repeatPassword')?.touched">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <div class="message" [ngClass]="{ 'error': isError, 'success': !isError }" *ngIf="message">
+      {{ message }}
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid || isLoading">
+      {{ isLoading ? 'Registering...' : 'Register' }}
+    </button>
+
+    <p class="login-link">Already have an account? <a routerLink="/login">Login</a></p>
+  </form>
+</div>

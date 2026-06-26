@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/">🏢 Client Management System</a>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/register" routerLinkActive="active" *ngIf="!authService.isLoggedIn()">Register</a>
+    <a routerLink="/login" routerLinkActive="active" *ngIf="!authService.isLoggedIn()">Login</a>
+    <a routerLink="/clients" routerLinkActive="active" *ngIf="authService.isLoggedIn()">Clients</a>
+    <a routerLink="/meetings" routerLinkActive="active" *ngIf="authService.isLoggedIn()">Meetings</a>
+    <button class="btn-logout" (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</button>
+  </div>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
