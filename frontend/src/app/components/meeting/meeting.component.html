@@ -1,0 +1,80 @@
+<div class="page">
+  <div class="page-header">
+    <h2>Meeting Schedule</h2>
+    <button class="btn btn-primary" (click)="toggleForm()">
+      {{ showForm ? 'Cancel' : '+ Schedule Meeting' }}
+    </button>
+  </div>
+
+  <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+  <div *ngIf="error" class="alert alert-error">{{ error }}</div>
+
+  <div *ngIf="showForm" class="card">
+    <h3>Create a Meeting Schedule</h3>
+    <hr />
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Meeting Topic</label>
+        <input type="text" [(ngModel)]="formData.meeting_topic" name="meeting_topic"
+               placeholder="Enter Meeting Topic" required />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Number of People</label>
+          <input type="number" [(ngModel)]="formData.number_of_people" name="number_of_people"
+                 placeholder="Enter number of people" min="1" required />
+        </div>
+        <div class="form-group">
+          <label>Client (optional)</label>
+          <select [(ngModel)]="formData.client_id" name="client_id">
+            <option [value]="undefined">-- Select Client --</option>
+            <option *ngFor="let c of clients" [value]="c.id">{{ c.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Start Time</label>
+          <input type="datetime-local" [(ngModel)]="formData.start_time" name="start_time" required />
+        </div>
+        <div class="form-group">
+          <label>End Time</label>
+          <input type="datetime-local" [(ngModel)]="formData.end_time" name="end_time" />
+        </div>
+      </div>
+      <hr />
+      <div class="btn-row">
+        <button type="submit" class="btn btn-primary" [disabled]="loading">
+          {{ loading ? 'Saving...' : (editingId ? 'Update' : 'Schedule') }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Scheduled Meetings ({{ meetings.length }})</h3>
+    <table *ngIf="meetings.length > 0; else noMeetings">
+      <thead>
+        <tr>
+          <th>#</th><th>Topic</th><th>People</th><th>Client</th><th>Start Time</th><th>Status</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of meetings; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ m.meeting_topic }}</td>
+          <td>{{ m.number_of_people }}</td>
+          <td>{{ m.client_name || '-' }}</td>
+          <td>{{ m.start_time | date:'medium' }}</td>
+          <td><span class="badge" [class.scheduled]="m.status === 'scheduled'">{{ m.status }}</span></td>
+          <td>
+            <button class="btn-sm btn-edit" (click)="editMeeting(m)">Edit</button>
+            <button class="btn-sm btn-delete" (click)="deleteMeeting(m.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noMeetings><p class="no-data">No meetings scheduled yet.</p></ng-template>
+  </div>
+</div>
